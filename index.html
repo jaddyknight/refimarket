@@ -9,9 +9,17 @@
 <body>
     <header>
         <h1>Добро пожаловать в наш интернет-магазин</h1>
+        <button id="view-cart">Корзина (<span id="cart-count">0</span>)</button>
     </header>
     <main>
         <div id="products-container"></div>
+        <div id="cart-container" class="hidden">
+            <h2>Корзина</h2>
+            <div id="cart-items"></div>
+            <p id="total-price"></p>
+            <button id="checkout">Оформить заказ</button>
+            <button id="clear-cart">Очистить корзину</button>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
