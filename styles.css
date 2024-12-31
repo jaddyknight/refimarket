@@ -13,7 +13,9 @@ header {
     color: white;
     padding: 1rem;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 main {
@@ -56,4 +58,25 @@ main {
 
 .product button:hover {
     background-color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+#cart-container {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+#cart-items {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+}
+
+#cart-items div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
 }
