@@ -30,7 +30,7 @@ h1 {
     align-items: center;
     padding: 10px 20px;
     border-radius: 30px;
-    background-color: #007bff;
+    background-color: #ffcccb; /* Нежно-розовый цвет */
     color: white;
     border: none;
     cursor: pointer;
@@ -48,7 +48,7 @@ h1 {
     right: 10px;
     display: flex;
     align-items: center;
-    background-color: #007bff;
+    background-color: #ffcccb; /* Нежно-розовый цвет */
     color: white;
     padding: 10px 20px;
     border-radius: 30px;
