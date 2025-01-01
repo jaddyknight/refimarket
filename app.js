@@ -58,7 +58,6 @@ function addToCart(productId) {
     }
     showNotification('Товар добавлен в корзину');
 }
-
 function showNotification(message) {
     const notification = document.getElementById('notification');
     notification.textContent = message;
