@@ -121,6 +121,8 @@ button:disabled {
     transform: translate(-50%, -50%);
     width: calc(100% - 40px); /* Отступы по краям */
     max-width: 600px;
+    height: calc(100% - 40px); /* Отступы по краям */
+    max-height: 80vh;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
 }
@@ -131,13 +133,14 @@ button:disabled {
     padding: 20px;
     border: 1px solid #888;
     width: 100%;
+    height: auto;
     text-align: center;
     box-sizing: border-box;
 }
 
 .modal img {
     max-width: 100%;
-    max-height: 80vh;
+    max-height: 60vh;
     cursor: zoom-in;
 }
 
