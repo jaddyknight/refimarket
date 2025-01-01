@@ -4,20 +4,20 @@
         "name": "Товар 1",
         "description": "Описание товара 1",
         "price": 1000,
-        "images": ["tovar1_1.png", "tovar1_2.png", "tovar1_3.png"]
+        "images": ["tovar/tovar1_1.png", "tovar/tovar1_2.png", "tovar/tovar1_3.png"]
     },
     {
         "id": 2,
         "name": "Товар 2",
         "description": "Описание товара 2",
         "price": 1500,
-        "images": ["tovar2_1.png", "tovar2_2.png", "tovar2_3.png", "tovar2_4.png", "tovar2_5.png", "tovar2_6.png"]
+        "images": ["tovar/tovar2_1.png", "tovar/tovar2_2.png", "tovar/tovar2_3.png", "tovar/tovar2_4.png", "tovar/tovar2_5.png", "tovar/tovar2_6.png"]
     },
     {
         "id": 3,
         "name": "Товар 3",
         "description": "Описание товара 3",
         "price": 2000,
-        "images": ["tovar3_1.png", "tovar3_2.png", "tovar3_3.png", "tovar3_4.png"]
+        "images": ["tovar/tovar3_1.png", "tovar/tovar3_2.png", "tovar/tovar3_3.png", "tovar/tovar3_4.png"]
     }
 ]
