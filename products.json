@@ -1,23 +1,39 @@
 [
     {
         "id": 1,
-        "name": "Увлажняющий крем",
-        "description": "Легкий увлажняющий крем для ежедневного использования.",
-        "price": 1200,
-        "images": ["tovar/tovar1_1.jpg", "tovar/tovar1_2.jpg"]
+        "name": "Продукт 1",
+        "description": "Описание продукта 1",
+        "price": 100,
+        "images": [
+            "image1_1.png",
+            "image1_2.png",
+            "image1_3.png"
+        ]
     },
     {
         "id": 2,
-        "name": "Шампунь для волос",
-        "description": "Шампунь с натуральными экстрактами для всех типов волос.",
-        "price": 800,
-        "images": ["tovar/tovar2_1.jpg", "tovar/tovar2_2.jpg"]
+        "name": "Продукт 2",
+        "description": "Описание продукта 2",
+        "price": 200,
+        "images": [
+            "image2_1.png",
+            "image2_2.png",
+            "image2_3.png",
+            "image2_4.png",
+            "image2_5.png",
+            "image2_6.png"
+        ]
     },
     {
         "id": 3,
-        "name": "Маска для лица",
-        "description": "Очищающая маска для лица с эффектом детокса.",
-        "price": 1500,
-        "images": ["tovar/tovar3_1.jpg", "tovar/tovar3_2.jpg"]
+        "name": "Продукт 3",
+        "description": "Описание продукта 3",
+        "price": 300,
+        "images": [
+            "image3_1.png",
+            "image3_2.png",
+            "image3_3.png",
+            "image3_4.png"
+        ]
     }
 ]
