@@ -1,55 +1,34 @@
-const products = [
-    {
-        id: 1,
-        name: 'Увлажняющий крем',
-        description: 'Легкий увлажняющий крем для ежедневного использования.',
-        price: 1200,
-        images: ['tovar/tovar1_1.jpg', 'tovar/tovar1_2.jpg'],
-    },
-    {
-        id: 2,
-        name: 'Шампунь для волос',
-        description: 'Шампунь с натуральными экстрактами для всех типов волос.',
-        price: 800,
-        images: ['tovar/tovar2_1.jpg', 'tovar/tovar2_2.jpg'],
-    },
-    {
-        id: 3,
-        name: 'Маска для лица',
-        description: 'Очищающая маска для лица с эффектом детокса.',
-        price: 1500,
-        images: ['tovar/tovar3_1.jpg', 'tovar/tovar3_2.jpg'],
-    }
-];
+let products;
+
+fetch('products.json')
+    .then(response => response.json())
+    .then(data => {
+        products = data;
+        const productList = document.getElementById('product-list');
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <img src="${product.images[0]}" alt="${product.name}" onclick="openImageModal(${product.id}, 0)">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p>Цена: ${product.price} руб.</p>
+                <div class="quantity">
+                    <button onclick="decreaseQuantity(${product.id})">-</button>
+                    <input type="number" id="quantity-${product.id}" value="1">
+                    <button onclick="increaseQuantity(${product.id})">+</button>
+                </div>
+                <button onclick="addToCart(${product.id})">Добавить в корзину</button>
+            `;
+            productList.appendChild(productCard);
+        });
+    });
 
 const cart = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('products.json')
-        .then(response => response.json())
-        .then(products => {
-            const productList = document.getElementById('product-list');
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <img src="${product.images[0]}" alt="${product.name}" onclick="openImageModal(${product.id}, 0)">
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p>Цена: ${product.price} руб.</p>
-                    <div class="quantity">
-                        <button onclick="decreaseQuantity(${product.id})">-</button>
-                        <input type="number" id="quantity-${product.id}" value="1">
-                        <button onclick="increaseQuantity(${product.id})">+</button>
-                    </div>
-                    <button onclick="addToCart(${product.id})">Добавить в корзину</button>
-                `;
-                productList.appendChild(productCard);
-            });
-        });
-
     document.getElementById('cart-button').addEventListener('click', showCart);
-    document.getElementsByClassName('close')[0].addEventListener('click', closeCart);
+    document.getElementById('cart-close').addEventListener('click', closeCart);
     document.getElementById('checkout-button').addEventListener('click', checkout);
     document.getElementById('image-close').addEventListener('click', closeImageModal);
 });
@@ -75,7 +54,16 @@ function addToCart(productId) {
     } else {
         cart.push({ ...product, quantity });
     }
-    alert('Товар добавлен в корзину');
+    showNotification('Товар добавлен в корзину');
+}
+
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.className = 'notification show';
+    setTimeout(() => {
+        notification.className = 'notification';
+    }, 5000);
 }
 
 function showCart() {
@@ -134,30 +122,4 @@ function checkout() {
 
     const orderMessage = `
         Заказ с сайта:
-        ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price * item.quantity} руб.`).join('\n')}
-        Общая сумма: ${orderDetails.reduce((total, item) => total + item.price * item.quantity, 0)} руб.
-    `;
-
-    const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
-    const chatId = '4655375127';
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: orderMessage
-        })
-    }).then(response => {
-        if (response.ok) {
-            alert('Заказ оформлен!');
-            cart.length = 0;
-            closeCart();
-        } else {
-            alert('Ошибка при оформлении заказа.');
-        }
-    });
-}
+        ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price * item.quantity} руб.`).join('\n[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
