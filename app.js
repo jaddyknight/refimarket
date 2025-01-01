@@ -151,42 +151,23 @@ ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price
     const chatId = '-4655375127';
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: orderMessage
-        })
-    }).then(response => {
-        if (response.ok) {
-            alert('Заказ оформлен!');
-            cart.length = 0;
-            closeCart();
-            closeContactModal();
-            sendConfirmationToClient(customerContact); // Отправляем подтверждение клиенту
-        } else {
-            alert('Ошибка при оформлении заказа.');
-        }
-    });
-}
+    const form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', url);
+    form.style.display = 'none';
 
-function sendConfirmationToClient(contact) {
-    const message = `Спасибо за ваш заказ! Мы скоро с вами свяжемся. Ваши контакты: ${contact}`;
-    const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
-    const chatId = '-4655375127';
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const chatIdInput = document.createElement('input');
+    chatIdInput.setAttribute('type', 'hidden');
+    chatIdInput.setAttribute('name', 'chat_id');
+    chatIdInput.setAttribute('value', chatId);
+    form.appendChild(chatIdInput);
 
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: message
-        })
-    });
+    const textInput = document.createElement('input');
+    textInput.setAttribute('type', 'hidden');
+    textInput.setAttribute('name', 'text');
+    textInput.setAttribute('value', orderMessage);
+    form.appendChild(textInput);
+
+    document.body.appendChild(form);
+    form.submit();
 }
