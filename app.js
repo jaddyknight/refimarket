@@ -136,7 +136,7 @@ ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            chat_id: chatId,
+            chat_id: -4655375127,
             text: orderMessage
         })
     }).then(response => {
