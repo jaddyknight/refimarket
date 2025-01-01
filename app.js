@@ -25,6 +25,7 @@ fetch('products.json')
     });
 
 const cart = [];
+let telegramId = '';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-button').addEventListener('click', showCart);
@@ -133,6 +134,9 @@ function submitContact() {
         return;
     }
 
+    // Имитируем получение Telegram ID клиента (необходимо внедрить реальную логику получения ID)
+    telegramId = '123456789'; // Замените на реальное значение
+
     const orderDetails = cart.map(item => ({
         name: item.name,
         quantity: item.quantity,
@@ -145,6 +149,7 @@ ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price
 Общая сумма: ${orderDetails.reduce((total, item) => total + item.price * item.quantity, 0)} руб.
 Имя клиента: ${customerName}
 Контакты клиента: ${customerContact}
+Telegram ID клиента: ${telegramId}
 `;
 
     const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
