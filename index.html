@@ -22,9 +22,16 @@
             <h2>Корзина</h2>
             <div id="cart-items"></div>
             <h3>Общая сумма: <span id="total-price"></span></h3>
-            <input type="text" id="customer-name" placeholder="Ваше имя">
-            <input type="text" id="customer-contact" placeholder="Ваши контакты (телефон или email)">
             <button id="checkout-button">Оформить заказ</button>
+        </div>
+    </div>
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="contact-close">&times;</span>
+            <h2>Введите контактные данные</h2>
+            <input type="text" id="customer-name" placeholder="Ваше имя">
+            <input type="text" id="customer-contact" placeholder="Ваш номер телефона">
+            <button id="submit-contact">Отправить</button>
         </div>
     </div>
     <div id="image-modal" class="modal">
