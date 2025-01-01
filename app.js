@@ -127,7 +127,7 @@ ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price
 `;
 
     const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
-    const chatId = '4655375127';
+    const chatId = '-4655375127';
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     fetch(url, {
