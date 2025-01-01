@@ -102,24 +102,4 @@ function openImageModal(productId, imageIndex) {
     };
 
     document.getElementById('next-image').onclick = function() {
-        if (currentIndex < product.images.length - 1) {
-            currentIndex++;
-            modalImg.src = product.images[currentIndex];
-        }
-    };
-}
-
-function closeImageModal() {
-    document.getElementById('image-modal').style.display = 'none';
-}
-
-function checkout() {
-    const orderDetails = cart.map(item => ({
-        name: item.name,
-        quantity: item.quantity,
-        price: item.price
-    }));
-
-    const orderMessage = `
-        Заказ с сайта:
-        ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price * item.quantity} руб.`).join('\n[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
+        if (currentIndex < product.images.length - 1)[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
