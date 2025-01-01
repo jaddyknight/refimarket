@@ -1,4 +1,5 @@
 let products;
+let telegramId = ''; // Telegram ID клиента
 
 fetch('products.json')
     .then(response => response.json())
@@ -25,7 +26,6 @@ fetch('products.json')
     });
 
 const cart = [];
-let telegramId = '';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-button').addEventListener('click', showCart);
@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('contact-close').addEventListener('click', closeContactModal);
     document.getElementById('submit-contact').addEventListener('click', submitContact);
     document.getElementById('image-close').addEventListener('click', closeImageModal);
+
+    // Имитируем получение Telegram ID клиента (на основе сохраненного ID при взаимодействии с ботом)
+    telegramId = localStorage.getItem('telegramId') || ''; // Получение из локального хранилища для примера
 });
 
 function increaseQuantity(productId) {
@@ -134,8 +137,10 @@ function submitContact() {
         return;
     }
 
-    // Получаем Telegram ID клиента (необходимо внедрить реальную логику получения ID)
-    telegramId = '123456789'; // Замените на реальное значение
+    if (!telegramId) {
+        alert('Пожалуйста, сначала взаимодействуйте с ботом в Telegram.');
+        return;
+    }
 
     const orderDetails = cart.map(item => ({
         name: item.name,
