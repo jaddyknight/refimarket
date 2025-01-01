@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интернет-магазин</title>
+    <title>Интернет-магазин косметики</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Добро пожаловать в наш интернет-магазин</h1>
-        <button id="view-cart">Корзина (<span id="cart-count">0</span>)</button>
+        <h1>Интернет-магазин косметики</h1>
+        <button id="cart-button"><img src="korzina.png" alt="Корзина"> Корзина</button>
     </header>
     <main>
-        <div id="products-container"></div>
-        <div id="cart-container" class="hidden">
+        <div id="product-list"></div>
+    </main>
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
             <h2>Корзина</h2>
             <div id="cart-items"></div>
-            <p id="total-price"></p>
-            <button id="checkout">Оформить заказ</button>
-            <button id="clear-cart">Очистить корзину</button>
+            <h3>Общая сумма: <span id="total-price"></span></h3>
+            <button id="checkout-button">Оформить заказ</button>
         </div>
-    </main>
-    <script src="script.js"></script>
+    </div>
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="image-close">&times;</span>
+            <img id="modal-image" src="" alt="Увеличенное изображение товара">
+            <button id="prev-image">←</button>
+            <button id="next-image">→</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
