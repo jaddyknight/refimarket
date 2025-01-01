@@ -96,13 +96,16 @@ function openImageModal(productId, imageIndex) {
     modalImg.src = product.images[currentIndex];
     modal.style.display = 'block';
 
+    modalImg.style.cursor = "zoom-in";
     modalImg.onclick = function() {
         if (modalImg.style.transform === "scale(2)") {
             modalImg.style.transform = "scale(1)";
+            modalImg.style.cursor = "zoom-in";
         } else {
             modalImg.style.transform = "scale(2)";
+            modalImg.style.cursor = "zoom-out";
         }
-    }
+    };
 
     document.getElementById('prev-image').onclick = function() {
         if (currentIndex > 0) {
