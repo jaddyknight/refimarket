@@ -10,9 +10,7 @@ header {
     align-items: center;
     background-color: #f8f8f8;
     padding: 10px 20px;
-    position: fixed;
     width: 100%;
-    z-index: 1000;
 }
 
 h1 {
@@ -42,7 +40,7 @@ h1 {
     margin-right: 10px;
 }
 
-#cart-banner {
+#cart-banner, .cart-bottom-banner {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -61,7 +59,6 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
-    margin-top: 80px; /* Добавляем отступ для фиксированного заголовка */
 }
 
 .product-card {
