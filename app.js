@@ -29,7 +29,9 @@ const cart = [];
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-button').addEventListener('click', showCart);
     document.getElementById('cart-close').addEventListener('click', closeCart);
-    document.getElementById('checkout-button').addEventListener('click', checkout);
+    document.getElementById('checkout-button').addEventListener('click', openContactModal);
+    document.getElementById('contact-close').addEventListener('click', closeContactModal);
+    document.getElementById('submit-contact').addEventListener('click', submitContact);
     document.getElementById('image-close').addEventListener('click', closeImageModal);
 });
 
@@ -86,19 +88,4 @@ function closeCart() {
 }
 
 function openImageModal(productId, imageIndex) {
-    const modal = document.getElementById('image-modal');
-    const modalImg = document.getElementById('modal-image');
-    const product = products.find(p => p.id === productId);
-    let currentIndex = imageIndex;
-
-    modalImg.src = product.images[currentIndex];
-    modal.style.display = 'block';
-
-    document.getElementById('prev-image').onclick = function() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            modalImg.src = product.images[currentIndex];
-        }
-    };
-
-    document.getElementById('next-image').onclick =[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
+    const modal =[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
