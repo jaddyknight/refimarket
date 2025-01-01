@@ -88,8 +88,6 @@ function closeCart() {
 }
 
 function openImageModal(productId, imageIndex) {
-    const modal =[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
-function openImageModal(productId, imageIndex) {
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-image');
     const product = products.find(p => p.id === productId);
