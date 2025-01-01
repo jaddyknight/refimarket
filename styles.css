@@ -2,13 +2,16 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background: url('bg.png') no-repeat center center fixed; /* Фиксированный фон */
+    background-size: cover; /* Растягиваем фон на весь экран */
+    backdrop-filter: blur(10px); /* Блюр поверх фона */
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f8f8;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон заголовка */
     padding: 10px 20px;
     width: 100%;
 }
@@ -72,6 +75,7 @@ h1 {
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон карточки товара */
 }
 
 .product-card img {
