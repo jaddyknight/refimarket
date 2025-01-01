@@ -25,7 +25,6 @@ fetch('products.json')
     });
 
 const cart = [];
-let telegramId = '123456789'; // Имитируем получение Telegram ID клиента
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-button').addEventListener('click', showCart);
@@ -146,7 +145,6 @@ ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price
 Общая сумма: ${orderDetails.reduce((total, item) => total + item.price * item.quantity, 0)} руб.
 Имя клиента: ${customerName}
 Контакты клиента: ${customerContact}
-Telegram ID клиента: ${telegramId}
 `;
 
     const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
@@ -186,7 +184,7 @@ function sendConfirmationToClient(contact) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            chat_id: telegramId,
+            chat_id: chatId,
             text: message
         })
     });
