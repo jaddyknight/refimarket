@@ -149,3 +149,49 @@ ${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price
         }
     });
 }
+function checkout() {
+    const customerName = document.getElementById('customer-name').value;
+    const customerContact = document.getElementById('customer-contact').value;
+
+    if (!customerName || !customerContact) {
+        alert('Пожалуйста, укажите ваше имя и контактные данные.');
+        return;
+    }
+
+    const orderDetails = cart.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
+    }));
+
+    const orderMessage = `
+Заказ с сайта:
+${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price * item.quantity} руб.`).join('\n')}
+Общая сумма: ${orderDetails.reduce((total, item) => total + item.price * item.quantity, 0)} руб.
+Имя клиента: ${customerName}
+Контакты клиента: ${customerContact}
+`;
+
+    const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
+    const chatId = '-4655375127';
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: orderMessage
+        })
+    }).then(response => {
+        if (response.ok) {
+            alert('Заказ оформлен!');
+            cart.length = 0;
+            closeCart();
+        } else {
+            alert('Ошибка при оформлении заказа.');
+        }
+    });
+}
