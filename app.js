@@ -9,7 +9,7 @@ fetch('products.json')
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
-                <img src="tovar${product.id}_1.png" alt="${product.name}" onclick="openImageModal(${product.id}, 0)">
+                <img src="${product.images[0]}" alt="${product.name}" onclick="openImageModal(${product.id}, 0)">
                 <h3>${product.name}</h3>
                 <p>${product.description}</p>
                 <p>Цена: ${product.price} руб.</p>
@@ -22,7 +22,8 @@ fetch('products.json')
             `;
             productList.appendChild(productCard);
         });
-    });
+    })
+    .catch(error => console.error('Ошибка загрузки данных: ', error));
 
 const cart = [];
 
@@ -93,7 +94,7 @@ function openImageModal(productId, imageIndex) {
     const product = products.find(p => p.id === productId);
     let currentIndex = imageIndex;
 
-    modalImg.src = `tovar${productId}_${currentIndex + 1}.png`;
+    modalImg.src = product.images[currentIndex];
     modal.style.display = 'block';
 
     modalImg.style.cursor = "zoom-in";
@@ -110,14 +111,14 @@ function openImageModal(productId, imageIndex) {
     document.getElementById('prev-image').onclick = function() {
         if (currentIndex > 0) {
             currentIndex--;
-            modalImg.src = `tovar${productId}_${currentIndex + 1}.png`;
+            modalImg.src = product.images[currentIndex];
         }
     };
 
     document.getElementById('next-image').onclick = function() {
         if (currentIndex < product.images.length - 1) {
             currentIndex++;
-            modalImg.src = `tovar${productId}_${currentIndex + 1}.png`;
+            modalImg.src = product.images[currentIndex];
         }
     };
 }
