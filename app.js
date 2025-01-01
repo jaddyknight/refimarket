@@ -58,6 +58,7 @@ function addToCart(productId) {
     }
     showNotification('Товар добавлен в корзину');
 }
+
 function showNotification(message) {
     const notification = document.getElementById('notification');
     notification.textContent = message;
@@ -94,6 +95,14 @@ function openImageModal(productId, imageIndex) {
 
     modalImg.src = product.images[currentIndex];
     modal.style.display = 'block';
+
+    modalImg.onclick = function() {
+        if (modalImg.style.transform === "scale(2)") {
+            modalImg.style.transform = "scale(1)";
+        } else {
+            modalImg.style.transform = "scale(2)";
+        }
+    }
 
     document.getElementById('prev-image').onclick = function() {
         if (currentIndex > 0) {
