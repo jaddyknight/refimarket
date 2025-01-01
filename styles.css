@@ -22,6 +22,23 @@ h1 {
     cursor: pointer;
 }
 
+.oval-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-icon {
+    width: 64px;
+    height: 64px;
+    margin-right: 10px;
+}
+
 #product-list {
     display: flex;
     flex-wrap: wrap;
