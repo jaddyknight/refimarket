@@ -1,5 +1,4 @@
 let products;
-let telegramId = ''; // Telegram ID клиента
 
 fetch('products.json')
     .then(response => response.json())
@@ -26,6 +25,7 @@ fetch('products.json')
     });
 
 const cart = [];
+let telegramId = '123456789'; // Имитируем получение Telegram ID клиента
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-button').addEventListener('click', showCart);
@@ -34,9 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('contact-close').addEventListener('click', closeContactModal);
     document.getElementById('submit-contact').addEventListener('click', submitContact);
     document.getElementById('image-close').addEventListener('click', closeImageModal);
-
-    // Имитируем получение Telegram ID клиента (на основе сохраненного ID при взаимодействии с ботом)
-    telegramId = localStorage.getItem('telegramId') || ''; // Получение из локального хранилища для примера
 });
 
 function increaseQuantity(productId) {
@@ -137,11 +134,6 @@ function submitContact() {
         return;
     }
 
-    if (!telegramId) {
-        alert('Пожалуйста, сначала взаимодействуйте с ботом в Telegram.');
-        return;
-    }
-
     const orderDetails = cart.map(item => ({
         name: item.name,
         quantity: item.quantity,
@@ -176,8 +168,26 @@ Telegram ID клиента: ${telegramId}
             cart.length = 0;
             closeCart();
             closeContactModal();
+            sendConfirmationToClient(customerContact); // Отправляем подтверждение клиенту
         } else {
             alert('Ошибка при оформлении заказа.');
         }
+    });
+}
+
+function sendConfirmationToClient(contact) {
+    const message = `Спасибо за ваш заказ! Мы скоро с вами свяжемся. Ваши контакты: ${contact}`;
+    const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            chat_id: telegramId,
+            text: message
+        })
     });
 }
