@@ -134,7 +134,7 @@ function submitContact() {
         return;
     }
 
-    // Имитируем получение Telegram ID клиента (необходимо внедрить реальную логику получения ID)
+    // Получаем Telegram ID клиента (необходимо внедрить реальную логику получения ID)
     telegramId = '123456789'; // Замените на реальное значение
 
     const orderDetails = cart.map(item => ({
