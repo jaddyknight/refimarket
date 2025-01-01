@@ -89,3 +89,87 @@ function closeCart() {
 
 function openImageModal(productId, imageIndex) {
     const modal =[_{{{CITATION{{{_1{](https://github.com/watchping/vue-course/tree/6a60dc019287a13859793f1ec7fef84dc41aa2b9/temp.md)[_{{{CITATION{{{_2{](https://github.com/mengeangIT/masterbackpack55/tree/6d70a8c668c31bfa1dcafee6a6ff6039a0a14963/resources%2Fviews%2Fms%2Fcustomer%2Fcheckout.blade.php)
+function openImageModal(productId, imageIndex) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const product = products.find(p => p.id === productId);
+    let currentIndex = imageIndex;
+
+    modalImg.src = product.images[currentIndex];
+    modal.style.display = 'block';
+
+    document.getElementById('prev-image').onclick = function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            modalImg.src = product.images[currentIndex];
+        }
+    };
+
+    document.getElementById('next-image').onclick = function() {
+        if (currentIndex < product.images.length - 1) {
+            currentIndex++;
+            modalImg.src = product.images[currentIndex];
+        }
+    };
+}
+
+function closeImageModal() {
+    document.getElementById('image-modal').style.display = 'none';
+}
+
+function openContactModal() {
+    const contactModal = document.getElementById('contact-modal');
+    contactModal.style.display = 'block';
+}
+
+function closeContactModal() {
+    document.getElementById('contact-modal').style.display = 'none';
+}
+
+function submitContact() {
+    const customerName = document.getElementById('customer-name').value;
+    const customerContact = document.getElementById('customer-contact').value;
+
+    if (!customerName || !customerContact) {
+        alert('Пожалуйста, укажите ваше имя и контактные данные.');
+        return;
+    }
+
+    const orderDetails = cart.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
+    }));
+
+    const orderMessage = `
+Заказ с сайта:
+${orderDetails.map(item => `${item.name} - ${item.quantity} шт. - ${item.price * item.quantity} руб.`).join('\n')}
+Общая сумма: ${orderDetails.reduce((total, item) => total + item.price * item.quantity, 0)} руб.
+Имя клиента: ${customerName}
+Контакты клиента: ${customerContact}
+`;
+
+    const botToken = '7676763590:AAGHlRZ9wpLnX5QdQGaSx18JsrwbW0i8jQs';
+    const chatId = '-4655375127';
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: orderMessage
+        })
+    }).then(response => {
+        if (response.ok) {
+            alert('Заказ оформлен!');
+            cart.length = 0;
+            closeCart();
+            closeContactModal();
+        } else {
+            alert('Ошибка при оформлении заказа.');
+        }
+    });
+}
